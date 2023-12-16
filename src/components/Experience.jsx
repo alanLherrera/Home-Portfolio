@@ -58,7 +58,7 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>What I've Accomplished so far</p>
-        <h2 className={styles.sectionHeadText}>Experience</h2>
+        <h2 className={styles.sectionHeadText}>Experience.</h2>
       </motion.div>
       <VerticalTimeline>
         {experiences.map((experience, index) => (
