@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
-
+import { StarsCanvas } from "./canvas";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
-
+import React, { useEffect } from "react";
 const Hero = () => {
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -27,7 +31,7 @@ const Hero = () => {
       </div>
 
       <ComputersCanvas />
-
+      <StarsCanvas />
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
