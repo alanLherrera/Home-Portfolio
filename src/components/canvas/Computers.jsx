@@ -1,8 +1,10 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import React, { Suspense, useEffect, useRef } from "react";
+import { Canvas, useFrame, extend } from "@react-three/fiber";
+import { Preload, useGLTF, OrbitControls } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+
+extend({ OrbitControls });
 
 const Computers = ({ isMobile }) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
@@ -15,32 +17,38 @@ const Computers = ({ isMobile }) => {
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.9}
-        position={isMobile ? [0, -3, -2.2] : [-2, -0.5, -0.5]}
+        position={isMobile ? [0, -3, -2.2] : [5, -2.5, -0.5]}
         rotation={[-0.05, -0.6, -0.1]}
       />
     </mesh>
   );
 };
 
+const CustomCameraControls = () => {
+  const ref = useRef();
+  useFrame(({ clock }) => {
+    // Update the camera position to create a rotating globe effect
+    ref.current.position.x = Math.sin(clock.elapsedTime * 0.2) * 30;
+    ref.current.position.z = Math.cos(clock.elapsedTime * 0.2) * 30;
+    ref.current.lookAt(0, 0, 0);
+  });
+
+  return <perspectiveCamera ref={ref} />;
+};
+
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
 
-    // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
 
-    // Add the callback function as a listener for changes to the media query
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
-    // Remove the listener when the component is unmounted
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
@@ -48,14 +56,21 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas
-      frameloop="demand"
       shadows
+      frameloop="demand"
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
+      camera={{
+        fov: 45,
+        near: 0.1,
+        far: 200,
+        position: [-4, 3, 6],
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
+        <CustomCameraControls />
         <OrbitControls
+          autoRotate
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}

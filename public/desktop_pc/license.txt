@@ -1,11 +1,11 @@
 Model Information:
-* title:	Venator Class Star Destroyer
-* source:	https://sketchfab.com/3d-models/venator-class-star-destroyer-af3648043a5b4fd394adfc32baee369e
-* author:	Digital Sock (https://sketchfab.com/DigitalSock)
+* title:	Black Hole Gargantua
+* source:	https://sketchfab.com/3d-models/black-hole-gargantua-7dea5f2c235a46aeabf86953334b7b3f
+* author:	Opifex (https://sketchfab.com/Opifex_3d)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Venator Class Star Destroyer" (https://sketchfab.com/3d-models/venator-class-star-destroyer-af3648043a5b4fd394adfc32baee369e) by Digital Sock (https://sketchfab.com/DigitalSock) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Black Hole Gargantua" (https://sketchfab.com/3d-models/black-hole-gargantua-7dea5f2c235a46aeabf86953334b7b3f) by Opifex (https://sketchfab.com/Opifex_3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
